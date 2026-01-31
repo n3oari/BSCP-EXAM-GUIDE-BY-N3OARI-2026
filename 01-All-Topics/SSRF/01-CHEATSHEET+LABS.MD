@@ -12,9 +12,7 @@ loopback network interface
 
 - [SSRF-via-host-validation-bypass-via-connection-state-attack](../Host-Header-Injection/SSRF-via-host-validation-bypass-via-connection-state-attack.md) ❗
 
-- [3]()
-
-- [4]()
+- [SSRF filter bypass](ssrf-bypasas-filter.md)
 
 
 ## Methodology

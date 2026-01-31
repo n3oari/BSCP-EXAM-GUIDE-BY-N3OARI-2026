@@ -41,7 +41,9 @@ The exam consists of **2 machines**, each with **3 phases**, and a duration of *
 - [Burpsuite cheatsheet & tricks](/03-Extra/Burpsuite-CHEATSHEET.md)
 - [ALL-MY-PAYLOADS-GROUPED](03-Extra/ALL-PAYLOADS.md)
 - [REGEX explanation (util to interpreter code)](https://pythonium.net/regex)
+- [js-beautify (util to interpreter code)](https://beautifier.io/)
 - [URL validation bypass cheat sheet (SSRF)](https://portswigger.net/web-security/ssrf/url-validation-bypass-cheat-sheet)  
+
 ## Enumeration & Web Discovery
 
 - Burp Scanner && Site Map && Content Discovery

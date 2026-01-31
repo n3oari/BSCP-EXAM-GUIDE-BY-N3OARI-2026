@@ -14,7 +14,17 @@
 
 ## Methodology
 
-[api-wordlist-repo-by-chrislockard](https://github.com/chrislockard/api_wordlist)
+- 1: Site map -> Scan -> Deep Scan
+- 2: Site map -> Engagement tools -> Discovery Content
+- 3: Use the diccionary from [botes juan](https://github.com/botesjuan) [burp-labs-wordlists](https://github.com/botesjuan/Burp-Suite-Certified-Practitioner-Exam-Study/blob/main/wordlists/burp-labs-wordlist.txt)[api-wordlist-repo-by-chrislockard](https://github.com/chrislockard/api_wordlist) 
+
+```bash
+wfuzz -c --hc=404 -w burp-labs-wordlist.txt https://<LAB>/FUZZ 
+```
+
+
+
+
 
 ```
 - Recon ->

