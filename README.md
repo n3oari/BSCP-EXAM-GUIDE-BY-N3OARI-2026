@@ -103,8 +103,8 @@ The exam consists of **2 machines**, each with **3 phases**, and a duration of *
 | :-----------------------: | :-----: | :-----: | :-----: |
 |            XSS            |   🟢    |   🟢    |   🟡    |
 |            DOM            |   🟢    |   🟢    |         |
-|       SQL Injection            🔴    |   🟢    |   🟡    |         |
-|      NoSQL Injection           🔴   |   🟢    |   🟡    |         |
+|       SQL Injection       |     🔴    |   🟢    |   🟡    |         |
+|      NoSQL Injection      |     🔴   |   🟢    |   🟡    |         |
 |            CSRF           |   🟢    |   🟢    |         |
 |            SSRF           |         |         |   🟢    |
 |       Authentication      |   🟢    |   🟢    |     🔴    |
