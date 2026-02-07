@@ -20,5 +20,6 @@ After that: payload processing -> add rule -> match & replace -> \{file\} for <f
 Example:
 POC       -> \{file\} for etc/passwd 
 SECRET    -> \{file\} for home/carlos/secret
+```
 
 ![Screenshot1](../../04-Screenshots/path-traversal.png)
