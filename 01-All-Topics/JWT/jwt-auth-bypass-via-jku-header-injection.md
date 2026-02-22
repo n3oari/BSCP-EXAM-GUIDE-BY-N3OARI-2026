@@ -29,16 +29,12 @@ In this lab we will exploit the **jku** parameter in a JWT header. This paramete
 
 ```json
 
-
 {
    "keys": [
 
- {
-
      <public-key-JWT-key>
     
- }
-]
+ ]
 }
 
 ```

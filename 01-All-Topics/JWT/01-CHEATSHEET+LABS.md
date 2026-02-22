@@ -32,8 +32,11 @@
 ## Methodology
 
 ```bash
+- Detect algorithm
+    > symmetric?  -> brute force ,  path traversal in kid
+    > asymmetric? -> JWK , JKU
 - Modify the payload value.
-- Change the alg to none.
+- Change the alg to none -> remove signature from the JWT.
 - Weak signature? — try brute‑forcing the secret.
 - Try injecting header parameters — jwk (embedded key) or jku (JWKS URL).
 - Try path‑traversal on kid (e.g. point it to /dev/null).

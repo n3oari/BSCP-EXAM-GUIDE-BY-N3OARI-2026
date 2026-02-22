@@ -8,6 +8,11 @@ We look for a XSS vulnerability on the website to exfiltrate the victim's sessio
 
 ![Screenshoot2](../../04-Screenshots/offline2.png)
 
-Finally, we decode the Base64 cookie and use tools such as CrackStation to crack the hash and retrieve the plaintext value:
+Finally, we decode the Base64 cookie and use tools such as CrackStation to crack the hash and retrieve the plaintext value or with john:
+
+```bash
+john --format="Raw-MD5" --wordlist=/usr/share/wordlists/rockyou.txt hash
+```
+
 
 ![Screenshoot3](../../04-Screenshots/offline3.png)

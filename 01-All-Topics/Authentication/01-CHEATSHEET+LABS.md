@@ -10,7 +10,7 @@ Burp Macros
 
 ## Walkthrough - Most Important Labs
 
-- [Username-enumeration-via-response-timing+ip-blocked-bypass-via-X-Fowarded-For](Username-enumeration-via-response-timing+ip-blocked-bypass-via-X-Fowarded-For.md)
+- [Username-enumeration-via-response-timing+ip-blocked-bypass-via-X-Fowarded-For](Username-enumeration-via-response-timing+ip-blocked-bypass-via-X-Fowarded-For.md) ❗
   
 - [Brute-forcing-a-stay-logged-in-cookie-(cookie-easy-to-reproduce-username+md5+b64)](Brute-forcing-a-stay-logged-in-cookie-(cookie-easy-to-reproduce-username+md5+b64).md)
 
@@ -44,8 +44,18 @@ Burp Macros
 > Forgot password? 
 ```bash
     -> Reuse temporal token 			
-	  -> X-Forwarded-Host: <exploit-sv> -> token in our email
+	-> X-Forwarded-Host: <exploit-sv> -> send token in our email
+    -> Try exfiltrate the token from the api -> username=administrator%26field=reset_token%23
+
 ```
+<br>
+
+> Stay-Login?
+```bash
+  -> verify if the cookie is easy to reproduce, e.g -> hash md5 + user prefix + encode b64
+  -> steal the cookie (xss) and crack the hash offline
+```
+
 <br>
 
 > Cookie predecible?

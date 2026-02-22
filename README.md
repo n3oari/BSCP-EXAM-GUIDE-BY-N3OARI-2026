@@ -113,7 +113,7 @@ The exam consists of **2 machines**, each with **3 phases**, and a duration of *
 |    Web Cache Poisoning    |   🟢    |   🟢    |         |
 |    Web Cache Deception    |   🟢    |   🟢    |         |
 |         File Upload       |   🔴    |   🔴    |   🟢    |
-|   Host Header Injection   |   🟢    |   🟢    |         |
+|   Host Header Injection   |   🟡    |       |    🟢      |
 | Insecure Deserialization  |   🔴    |         |   🟢    |
 |   HTTP Request Smuggling  |   🟢    |   🟢    |         |
 |        API - Testing      |   🟢    |   🟢    |         |

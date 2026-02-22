@@ -26,8 +26,8 @@
 ## Methodology
 
 ```bash
-- Try switch POST to GET
-- Remove csrf token
+- Try switch POST to GET (remove post method)
+- Remove csrf token 
 - Token not tied to account -> Try valid (our) csrf token
 - Cookie ->
     > csrf token + username/email
