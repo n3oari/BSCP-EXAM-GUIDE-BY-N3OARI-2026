@@ -8,7 +8,7 @@
 
 ## Walkthrough - Most Important Labs
 
-- [Basis host header attack to retrieve reset token to change password](basic-host-header-attack.md)
+- [Basischost header attack to retrieve reset token to change password](basic-host-header-attack.md)
 
 - [Host-header-injection-via-web-cache-poisoning+xss](host-header-injection-via-web-cache-poisoning+xss.md)
 
