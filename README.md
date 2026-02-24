@@ -110,21 +110,21 @@ The exam consists of **2 machines**, each with **3 phases**, and a duration of *
 |       Authentication      |   🟢    |   🟢    |     🔴    |
 |           OAuth           |   🟢    |   🟢    |    🔴     |
 |   OS Command Injection    |         |         |   🟢    |
-|    Web Cache Poisoning    |   🟢    |   🟢    |         |
-|    Web Cache Deception    |   🟢    |   🟢    |         |
+|    Web Cache Poisoning    |   🟢    |   🟢    |    🔴     |
+|    Web Cache Deception    |   🟢    |   🟢    |  🔴       |
 |         File Upload       |   🔴    |   🔴    |   🟢    |
 |   Host Header Injection   |   🟡    |       |    🟢      |
-| Insecure Deserialization  |   🔴    |         |   🟢    |
-|   HTTP Request Smuggling  |   🟢    |   🟢    |         |
+| Insecure Deserialization  |   🔴    |    🔴     |   🟢    |
+|   HTTP Request Smuggling  |   🟢    |   🟢    |    🔴     |
 |        API - Testing      |   🟢    |   🟢    |         |
 |            CORS           |   🟢    |   🟢    |    🔴     |
-|    Prototype Pollution    |         |   🟢    |         |
+|    Prototype Pollution    |     🟢     |   🟢    |  🟢        |
 |             JWT           |   🟢    |   🟢    |     🔴    |
 |   GraphQL - API Endpoints |         |   🟢    |         |
 |         XML - XXE         |   🔴    |         |   🟢    |
-|            SSTI           |         |         |   🟢    |
+|            SSTI           |     🔴    |   🔴      |   🟢    |
 |   Broken Access Control   |   🔴    |   🟢    |         |
-|       Path Traversal      |         |         |   🟢    |
+|       Path Traversal      |    🔴     |  🔴       |   🟢    |
 |       Race Condition      |   🟢    |         |   🟢    |
 
 
