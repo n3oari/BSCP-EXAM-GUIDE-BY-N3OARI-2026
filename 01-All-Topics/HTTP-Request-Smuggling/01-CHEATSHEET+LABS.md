@@ -55,7 +55,8 @@ Scenario 1: Successful Synchronization (5 Bytes)
 
     Result: The request terminates correctly. HTTP 200 OK
 
-![Screenshot1](../../04-Screenshots/te-cl-desync1.png)
+![Screenshot4](../../04-Screenshots/cl-te-desync.png)
+
 
 
 Scenario 2: Forced Desynchronization (3 Bytes)
@@ -67,14 +68,13 @@ Scenario 2: Forced Desynchronization (3 Bytes)
     Result: The connection times out due to missing data. HTTP 500 Internal Server Error.
 
 
-![Screenshot2](../../04-Screenshots/te-cl-desync2.png)
+![Screenshot5](../../04-Screenshots/cl-te-desync2.png)
 
 
 > POC
 
 
-![Screenshot3](../../04-Screenshots/te-cl.png)
-
+![Screenshot6](../../04-Screenshots/cl-te-detect.png)
 
 
 #### HOW DESYNC TE-CL TO DETECT TE-CL + POC
@@ -91,7 +91,10 @@ To get a 200 OK, both servers must agree on where the request ends.
     Result: Both process the same data. The request is clean.
 
 
-![Screenshot4](../../04-Screenshots/cl-te-desync.png)
+
+![Screenshot1](../../04-Screenshots/te-cl-desync1.png)
+
+
 
 
 
@@ -108,12 +111,12 @@ To replicate the "Internal Server Error" (Timeout) you achieved in CL-TE, you do
     Result: Since the front-end has already closed the request and the back-end is still waiting for more data, the connection eventually drops. HTTP 500 Internal Server Error / Gateway Timeout.
 
 
+![Screenshot2](../../04-Screenshots/te-cl-desync2.png)
 
-![Screenshot5](../../04-Screenshots/cl-te-desync2.png)
+
 
 
 > POC
 
 
-![Screenshot6](../../04-Screenshots/cl-te-detect.png)
-
+![Screenshot3](../../04-Screenshots/te-cl.png)

