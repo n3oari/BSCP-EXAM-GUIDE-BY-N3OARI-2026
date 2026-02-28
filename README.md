@@ -1,4 +1,4 @@
-# ** IN PROCESS ** README.MD  (FEBRUARY 2026)
+#  README.MD  (MARCH 2026)
 
 This repo contains each cheatsheet along with its respective most important labs.
 
@@ -14,7 +14,7 @@ Each topic includes its own cheatsheet/methodology, the most relevant labs, and 
 
 > ❗I highly recommend creating **your own** cheatsheets. This repository is intended to help others, provide examples, show the overall organization, and demonstrate my work and methodologies.
 
-> 💡🤓 This repository is a summary of all my Obsidian notes for the BSCP. I learned a lot while creating it because I focused on making it as clear and didactic as possible, fully internalizing all the concepts to be able to explain them correctly. This repo was created **before passing the exam**.
+> 💡🤓 This repository is a summary of all my Obsidian notes for the BSCP. I learned a lot while creating it because I focused on making it as clear and didactic as possible, fully internalizing all the concepts to be able to explain them correctly. 
 
 <br>
 
@@ -35,18 +35,14 @@ The exam consists of **2 machines**, each with **3 phases**, and a duration of *
 
 ## Some utilities
 
-- [Tips and tricks before taking exam](/03-Extra/TIPS.md)
 - [Most Important HTTP Headers](/03-Extra/HTTP-HEADERS.md)
 - [HTB machines I recommended for each topic](/03-Extra/HTB-machines.md)
-- [Burpsuite cheatsheet & tricks](/03-Extra/Burpsuite-CHEATSHEET.md)
-- [ALL-MY-PAYLOADS-GROUPED](03-Extra/ALL-PAYLOADS.md)
 - [REGEX explanation (util to interpreter code)](https://pythonium.net/regex)
 - [js-beautify (util to interpreter code)](https://beautifier.io/)
 - [URL validation bypass cheat sheet (SSRF)](https://portswigger.net/web-security/ssrf/url-validation-bypass-cheat-sheet)  
 
 ## Enumeration & Web Discovery
 
-- Burp Scanner && Site Map && Content Discovery
 - [API testing / recon](01-All-Topics/API-testing/01-CHEATSHEET+LABS.md)
 - [Obfuscation payloads (escape bypass)](03-Extra/obfuscating-payload.md) 
 
@@ -83,7 +79,7 @@ The exam consists of **2 machines**, each with **3 phases**, and a duration of *
 - [Server Side Template Injection (SSTI)](01-All-Topics/SSTI/01-CHEATSHEET+LABS.md)
 
 
-### OTHERS (probably not on the BSCP exam, but essential for web-hacking knowledge and culture)
+### OTHERS 
 
 - [Race Condition](01-All-Topics/Race-Condition/01-CHEATSHEET+LABS.md)
 - [Clickjacking](01-All-Topics/Clickjacking/01-CHEATSHEET+LABS.md)
@@ -106,10 +102,10 @@ The exam consists of **2 machines**, each with **3 phases**, and a duration of *
 |       SQL Injection       |     🔴    |   🟢    |   🟡    |         |
 |      NoSQL Injection      |     🔴   |   🟢    |   🟡    |         |
 |            CSRF           |   🟢    |   🟢    |         |
-|            SSRF           |         |         |   🟢    |
+|            SSRF           |    🔴     |         |   🟢    |
 |       Authentication      |   🟢    |   🟢    |     🔴    |
 |           OAuth           |   🟢    |   🟢    |    🔴     |
-|   OS Command Injection    |         |         |   🟢    |
+|   OS Command Injection    |   🔴      |  🔴       |   🟢    |
 |    Web Cache Poisoning    |   🟢    |   🟢    |    🔴     |
 |    Web Cache Deception    |   🟢    |   🟢    |  🔴       |
 |         File Upload       |   🔴    |   🔴    |   🟢    |
