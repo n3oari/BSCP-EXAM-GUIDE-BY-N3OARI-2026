@@ -91,6 +91,8 @@ The exam consists of **2 machines**, each with **3 phases**, and a duration of *
 
 > ⚠️ This is a reference — please, always verify and research on your own.
 
+> ❗ Remember: You should probably chain multiple vulnerabilities.
+
 <br>
 
 <div align="center">
@@ -98,28 +100,28 @@ The exam consists of **2 machines**, each with **3 phases**, and a duration of *
 |         Category          | Stage 1 | Stage 2 | Stage 3 |
 | :-----------------------: | :-----: | :-----: | :-----: |
 |            XSS            |   🟢    |   🟢    |   🟡    |
-|            DOM            |   🟢    |   🟢    |         |
+|            DOM            |   🟢    |   🟢    |     🟡      |
 |       SQL Injection       |     🔴    |   🟢    |   🟡    |         |
 |      NoSQL Injection      |     🔴   |   🟢    |   🟡    |         |
-|            CSRF           |   🟢    |   🟢    |         |
-|            SSRF           |    🔴     |         |   🟢    |
+|            CSRF           |   🟢    |   🟢    |   🔴      |
+|            SSRF           |    🔴     |    🟡     |   🟢    |
 |       Authentication      |   🟢    |   🟢    |     🔴    |
 |           OAuth           |   🟢    |   🟢    |    🔴     |
 |   OS Command Injection    |   🔴      |  🔴       |   🟢    |
 |    Web Cache Poisoning    |   🟢    |   🟢    |    🔴     |
 |    Web Cache Deception    |   🟢    |   🟢    |  🔴       |
 |         File Upload       |   🔴    |   🔴    |   🟢    |
-|   Host Header Injection   |   🟡    |       |    🟢      |
+|   Host Header Injection   |   🟡    |    🟡   |    🟢      |
 | Insecure Deserialization  |   🔴    |    🔴     |   🟢    |
 |   HTTP Request Smuggling  |   🟢    |   🟢    |    🔴     |
-|        API - Testing      |   🟢    |   🟢    |         |
+|        API         |   🟢    |   🟢    |     🔴    |
 |            CORS           |   🟢    |   🟢    |    🔴     |
 |    Prototype Pollution    |     🟢     |   🟢    |  🟢        |
 |             JWT           |   🟢    |   🟢    |     🔴    |
-|   GraphQL - API Endpoints |         |   🟢    |         |
-|         XML - XXE         |   🔴    |         |   🟢    |
+|   GraphQL - API Endpoints |         |   🟢    |      🔴   |
+|         XML - XXE         |   🔴    |   🟡      |   🟢    |
 |            SSTI           |     🔴    |   🔴      |   🟢    |
-|   Broken Access Control   |   🔴    |   🟢    |         |
+|   Broken Access Control   |   🔴    |   🟢    |   🔴      |
 |       Path Traversal      |    🔴     |  🔴       |   🟢    |
 |       Race Condition      |   🟢    |         |   🟢    |
 
@@ -129,5 +131,8 @@ The exam consists of **2 machines**, each with **3 phases**, and a duration of *
 
 <br>
 
+## Contact me! 
+
+[![Discord](https://img.shields.io/badge/Discord-n3oari-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/users/1078444408086728839)
 
 <br>
